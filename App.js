@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { Text, View } from "react-native";
+import CategoriesScreen from "./screens/CategoriesScreen";
+
+import AppLoading from "expo-app-loading";
+import { useFonts } from "expo-font";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [isLoaded, loadingError] = useFonts({
+    "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
+    "open-sans-bold": require("./assets/fonts/OpenSans-Regular.ttf"),
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  let content = <AppLoading />;
+
+  if (loadingError) {
+    // You might want to do something more meaningful
+    console.warn("Loading resources failed!");
+  }
+
+  if (isLoaded) {
+    content = <CategoriesScreen />;
+  }
+
+  return <View style={{ flex: 1 }}>{content}</View>;
+}
