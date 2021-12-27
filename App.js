@@ -1,26 +1,34 @@
-import React from "react";
-import { Text, View } from "react-native";
-import CategoriesScreen from "./screens/CategoriesScreen";
+import React, { useState } from "react";
+import { enableScreens } from "react-native-screens";
+
+import MealsNavigator from "./navigation/MealsNavigator";
 
 import AppLoading from "expo-app-loading";
-import { useFonts } from "expo-font";
+import { loadAsync } from "expo-font";
+
+// Improves performance
+enableScreens();
 
 export default function App() {
-  const [isLoaded, loadingError] = useFonts({
-    "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
-    "open-sans-bold": require("./assets/fonts/OpenSans-Regular.ttf"),
-  });
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
-  let content = <AppLoading />;
+  const fetchFonts = () =>
+    loadAsync({
+      "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
+      "open-sans-bold": require("./assets/fonts/OpenSans-Regular.ttf"),
+    });
 
-  if (loadingError) {
-    // You might want to do something more meaningful
-    console.warn("Loading resources failed!");
+  let content = (
+    <AppLoading
+      startAsync={fetchFonts}
+      onFinish={() => setFontsLoaded(true)}
+      onError={() => console.warn("Loading resoucres failed")}
+    />
+  );
+
+  if (fontsLoaded) {
+    content = <MealsNavigator />;
   }
 
-  if (isLoaded) {
-    content = <CategoriesScreen />;
-  }
-
-  return <View style={{ flex: 1 }}>{content}</View>;
+  return content;
 }
