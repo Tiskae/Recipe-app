@@ -22,6 +22,7 @@ const defaultStackNavOptions = {
   headerTintColor: Platform.OS === "ios" ? colors.primaryColor : "white",
   headerTitleStyle: {
     fontFamily: "open-sans-bold",
+    fontSize: 18,
   },
   headerBackTitleStyle: {
     fontFamily: "open-sans",
@@ -179,7 +180,7 @@ const MainNavigator = createDrawerNavigator(
     Filters: {
       screen: FiltersNavigator,
       navigationOptions: {
-        drawerLabel: "Favorites",
+        drawerLabel: "Filters",
       },
     },
   },
