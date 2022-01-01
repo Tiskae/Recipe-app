@@ -77,8 +77,8 @@ MealDetailScreen.navigationOptions = (navigationData) => {
 
 const styles = StyleSheet.create({
   image: {
-    width: "100%",
     height: 200,
+    width: "100%",
   },
 
   details: {

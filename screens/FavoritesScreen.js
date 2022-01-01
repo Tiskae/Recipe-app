@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import { StyleSheet, View } from "react-native";
 import MealList from "../components/MealList";
 
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
