@@ -6,11 +6,12 @@ import MealItem from "./MealItem";
 const MealList = (props) => {
   const displayedMeals = props.listData;
 
-  const onSelectMealHandler = (id) => {
+  const onSelectMealHandler = (id, title) => {
     props.navigation.navigate({
       routeName: "MealDetails",
       params: {
         mealId: id,
+        mealTitle: title,
       },
     });
   };
@@ -24,7 +25,7 @@ const MealList = (props) => {
         affordability={itemData.item.affordability}
         imageUrl={itemData.item.imageUrl}
         onSelectMeal={() => {
-          onSelectMealHandler(itemData.item.id);
+          onSelectMealHandler(itemData.item.id, itemData.item.title);
         }}
       />
     );

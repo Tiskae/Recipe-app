@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { connect } from "react-redux";
 import {
   StyleSheet,
   Text,
@@ -85,7 +86,17 @@ const FiltersScreen = (props) => {
   );
 };
 
-export default FiltersScreen;
+const mapStateToProps = (state) => {
+  return { stuff1: state.meals.stuff1 };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    stuffFunc: () => dispatch({ type: "JUST_STUFF", payload: "stuffPayload" }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FiltersScreen);
 
 FiltersScreen.navigationOptions = (navData) => ({
   headerTitle: "Filters",

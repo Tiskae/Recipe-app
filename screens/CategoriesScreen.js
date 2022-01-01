@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  FlatList,
-  TouchableOpacity,
-  StatusBar,
-} from "react-native";
+import { StyleSheet, View, FlatList, StatusBar } from "react-native";
 
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";

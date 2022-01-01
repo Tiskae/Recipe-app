@@ -1,7 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { StyleSheet, Text, View, StatusBar } from "react-native";
 import MealList from "../components/MealList";
-import colors from "../constants/colors";
 
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import HeaderButton from "../components/HeaderButton";
@@ -9,12 +9,12 @@ import HeaderButton from "../components/HeaderButton";
 import { MEALS } from "../data/dummy-data";
 
 const FavoritesScreen = (props) => {
-  const displayedMeals = MEALS.filter((meal) => ["m1", "m2"].includes(meal.id));
+  const favoriteMeals = useSelector((state) => state.meals.favoriteMeals);
 
   return (
     <View style={styles.screen}>
       {/* <StatusBar backgroundColor={colors.accentColor} /> */}
-      <MealList navigation={props.navigation} listData={displayedMeals} />
+      <MealList navigation={props.navigation} listData={favoriteMeals} />
     </View>
   );
 };
