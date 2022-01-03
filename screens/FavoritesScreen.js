@@ -13,7 +13,7 @@ const FavoritesScreen = (props) => {
 
   return (
     <View style={styles.screen}>
-      {/* <StatusBar backgroundColor={colors.accentColor} /> */}
+      <StatusBar backgroundColor={colors.accentColor} />
       <MealList navigation={props.navigation} listData={favoriteMeals} />
     </View>
   );
